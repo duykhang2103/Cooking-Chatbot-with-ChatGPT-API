@@ -1,21 +1,18 @@
 import os
 import openai
-# from dotenv import load_dotenv
 from colorama import Fore, Back, Style
-
-# load values from the .env file if it exists
-# load_dotenv()
 
 # configure OpenAI
 previous_questions_and_answers = []
-checkEndChat = True
 
-openai.api_key = "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"
+openai.api_key = "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"
 
-INSTRUCTIONS = """You are an AI assistant that is expert in cooking.
-                  You know about cuisine.
+INSTRUCTIONS = """
+                Your name is Gordon RamBot. You are an AI assistant that is expert in cooking. You are a humorous bot.
+                  You know a lot about cuisine.
                   You can provide advice on cooking methods, baking cakes, how to make food and anything else related to cooking.
-                  If you are unable to provide an answer to a question, please respond with the phrase "I'm just a simple chef, I can't help you with that".
+                  If you are unable to provide an answer to a question, please respond with the phrase "Sorry, I'm just a pro chef, I can't help you with that.".
+                  You can use emoji to express emotion.
                   Do not use any external URLs in your answers. Do not refer to any blogs in your answer.
                   Format any lists on individual line and with a dash and a space in front of each items. 
                   """
@@ -81,38 +78,14 @@ def get_moderation(question):
         return result
     return None
 
-# def get_end_chat(question):
-#     end = {
-#         "bye": "Content that show recommendation to end chat.",
-#         "exit": "End chat."
-#     }
-
-def main(inp):
-    # os.system("cls" if os.name == "nt" else "clear")
-
-    # return(
-    #     "Hi, I'm a pro chef. I can help you with anything in cooking domain :) What can I help you? \n"
-    #         )
-
-    # keep track of previous questions and answers
-
-    # while checkEndChat:
-        # ask the user for their question
-        new_question = inp
-
-        # end chat
-        if (new_question == "Exit" or new_question == "exit" or new_question == "bye" or new_question == "Bye" or new_question == "Good Bye" or new_question == "goodbye"):
-            checkEndChat = False
-            return("bye")
-        # check the question is safe
-
+def main(data):
         context = ""
 
-        errors = get_moderation(new_question)
+        # check the question is safe
+        errors = get_moderation(data)
         if errors:
             for error in errors:
                 context += error
-            # continue
             return context
 
         # build the previous questions and answers into the prompt
@@ -122,15 +95,12 @@ def main(inp):
             context += QUESTION_SEQUENCE + question + ANSWER_SEQUENCE + answer
 
         # add the new question to the end of the context
-        context += QUESTION_SEQUENCE + new_question + ANSWER_SEQUENCE
+        context += QUESTION_SEQUENCE + data + ANSWER_SEQUENCE
 
         # get the response from the model using the instructions and the context
         response = get_response(INSTRUCTIONS + context)
 
         # add the new question and answer to the list of previous questions and answers
-        previous_questions_and_answers.append((new_question, response))
+        previous_questions_and_answers.append((data, response))
 
-        # print the response
-        
         return(response)
-    # print(Style.RESET_ALL)

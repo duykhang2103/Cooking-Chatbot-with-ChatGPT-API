@@ -1,219 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update div element with Flask and AJAX</title>
+    <title>Chat Gờ Pê Tê</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="../js/bootstrap.bundle.min.js" defer></script> -->
-    <!-- <script src="../js/bootstrap.js" defer></script> -->
-    <!-- <script src="../js/bootstrap.bundle.js" defer></script> -->
+    <script type="text/javascript" src = "../public/js/script.js" defer></script>
+    <script type="text/javascript" src = "../public/js/feature.js" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<!-- <style>
-    body {
-        font: 15px arial, sans-serif;
-        background-color: #d9d9d9;
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
-
-    .body {
-        margin: auto;
-        width: 550px;
-        max-width: 550px;
-        font: 15px arial, sans-serif;
-        background-color: white;
-        border-style: solid;
-        border-width: 1px;
-        padding-top: 20px;
-        padding-bottom: 25px;
-        padding-right: 25px;
-        padding-left: 25px;
-        box-shadow: 5px 5px 5px grey;
-        border-radius: 15px;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .body #output-div {
-        height: 500px;
-        max-height: 500px;
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        border-style: solid;
-        background-color: #f6f9f6;
-        border-width: 3px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 15px;
-        padding-right: 20px;
-        padding-left: 15px;
-        border-radius: 15px;
-        overflow: auto;
-    }
-
-    .body #output-div .message {
-        display: block;
-        position: relative;
-        padding: 2px;
-        margin: 4px;
-        width: 96%;
-        word-wrap: break-word;
-        border: 1px solid black;
-        border-radius: 10px;
-    }
-
-    .body #output-div .bot-message {
-        float: left;
-        background-color: brown;
-    }
-
-    .body #output-div .human-message {
-        float: right;
-        background-color: aqua;
-    }
-
-    .body #input-form {
-        display: flex;
-        position: relative;
-        width: 100%;
-        height: 40px;
-        flex-direction: row;
-        justify-content: space-around;
-        /* align-items: center; */
-    }
-
-    .body #input-form #input-text{
-        display: block;
-        position: relative;
-        width: 90%;
-        height: 100%;
-        float: left;
-    }
-
-    .body #input-form #submit {
-        display: block;
-        position: relative;
-        width: 10%;
-        height: 100%;
-        float: right;
-    }
-</style>
-
-<body>
-    <div class="body">
-        <div id="output-div"></div>
-        <form id="input-form" method="POST">
-            <input id="input-text" name="input_text" type="text" placeholder="Ask me something" required>
-            <button id="submit" type="submit">Submit</button>
-        </form>
-    </div>
-</body> -->
-
 <body>
     <div class="container">
-      <div class="row d-flex justify-content-center">
-          <div class="card" id="chat1" style="border-radius: 15px;">
-            <div
-              class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-              style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
-              <div class="title mb-0 fw-bold"><strong>Chat Gờ Pê Tê</strong></div>
-            </div>
+        <div class="row d-flex justify-content-center">
 
-            <div class="card-body">
-              <div class="message d-flex flex-row justify-content-start mb-4">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                  alt="avatar 1" style="width: 45px; height: 45px;">
-                <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(59, 192, 237,.2);">
-                  <div class="small mb-0">Hello, I'm a pro chef. I can help you with anything relating to cooking :)</div>
+            <div class="card" id="chat1" style="border-radius: 15px;">
+                <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" onclick="toggleCard()">
+                    <img class="bubble-avatar" src="../public/img/ai.png" alt="bot avatar">
+                    <div class="title mb-0 fw-bold"><strong>Chat Gờ Pê Tê</strong></div>
                 </div>
-              </div>
-              
+
+                <div class="card-body">
+                    <div class="message d-flex flex-row justify-content-start mb-4">
+                        <img src="../public/img/ai.png"
+                        alt="bot avatar" style="width: 45px; height: 45px; border-radius: 50%;">
+                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(59, 192, 237,.2);">
+                            <div class="small mb-0">Hello, I'm a pro chef. I can help you with anything relating to cooking :)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="form-outline" method="POST" autocomplete="off">
+                    <input class="form-control" id="textAreaExample" name="input_text" type="text" placeholder="Ask me something" required>
+                    <div class = "speaker" onclick="turnOnSpeaker()">
+                        <img src="../public/img/speaker-icon.png" alt="speaker-icon">
+                    </div>
+                    <div class="mic" onclick="turnOnMic()">
+                        <img src="../public/img/mic-icon.png" alt="mic">
+                    </div>
+                </form>
             </div>
 
-            <form class="form-outline" method="POST">
-            <input class="form-control" id="textAreaExample" name="input_text" type="text" placeholder="Ask me something" required>
-            </form>
-          </div>
-      </div>
+        </div>
     </div>
 </body>
 
-<script type="text/javascript" defer>
-    function createMessage(data, user){
-        let newMes = document.createElement('div');
-        newMes.classList.add('message');
-        newMes.classList.add('d-flex');
-        newMes.classList.add('flex-row');
-        newMes.classList.add('mb-4');
-        
-        let ava = document.createElement('img');
-        let mes = document.createElement('div');
-        let text = document.createElement('div');
-        
-        ava.alt="avatar 1";
-        ava.style.width =  "45px"; 
-        ava.style.height = "45px";
-        mes.classList.add("p-3");
-        mes.style.borderRadius ="15px";
-
-        text.classList.add("small");
-        text.classList.add("mb-0");
-        text.innerHTML = data;
-        mes.appendChild(text);
-
-        if(user == "AI") {
-            newMes.classList.add('justify-content-start');
-            ava.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp';
-            mes.classList.add("ms-3");
-            mes.style.backgroundColor = "rgba(57, 192, 237,.2)";
-            newMes.appendChild(ava);
-            newMes.appendChild(mes);
-        }
-        else {
-            newMes.classList.add('justify-content-end');
-            ava.src = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp';
-            mes.classList.add("me-3");
-            mes.classList.add("border");
-            mes.style.backgroundColor = "rgba(237, 207, 57, 0.2)";
-            newMes.appendChild(mes);
-            newMes.appendChild(ava);
-        }
-
-        return newMes;
-    }
-
-
-    $(document).ready(function() {
-        $('.form-outline').submit(function(event) {
-            event.preventDefault(); // prevent the form from submitting normally
-
-            let cardBody = document.querySelector('.card-body');
-            let input_text = document.getElementById('textAreaExample').value;
-            let newMessage = createMessage(input_text, "Human");
-
-            cardBody.append(newMessage);
-            cardBody.scrollTop = cardBody.scrollHeight;
-
-            document.getElementById('textAreaExample').value='';
-
-            $.ajax({
-                type: 'POST',
-                url: '/',
-                data: {'input_text': input_text},
-                success: function(data) {
-                    let modText = data.output_text.replace(new RegExp('\r?\n','g'), '<br>');
-                    newMessage = createMessage(modText, "AI"); 
-                    cardBody.append(newMessage);
-                    cardBody.scrollTop = cardBody.scrollHeight;
-                }
-            });
-        });
-    });
-</script>
 </html>
