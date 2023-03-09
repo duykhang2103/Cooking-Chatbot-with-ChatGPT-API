@@ -3,10 +3,11 @@
 <head>
     <title>Chat Gờ Pê Tê</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src = "../public/js/data.js" defer></script>
     <script type="text/javascript" src = "../public/js/script.js" defer></script>
     <script type="text/javascript" src = "../public/js/feature.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -20,13 +21,13 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="message d-flex flex-row justify-content-start mb-4">
+                    <!-- <div class="message d-flex flex-row justify-content-start mb-4">
                         <img src="../public/img/ai.png"
                         alt="bot avatar" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(59, 192, 237,.2);">
                             <div class="small mb-0">Hello, I'm a pro chef. I can help you with anything relating to cooking :)</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <form class="form-outline" method="POST" autocomplete="off">
@@ -37,6 +38,7 @@
                     <div class="mic" onclick="turnOnMic()">
                         <img src="../public/img/mic-icon.png" alt="mic">
                     </div>
+                    <div class="clear" onclick="clearData()">Clear</div>
                 </form>
             </div>
 

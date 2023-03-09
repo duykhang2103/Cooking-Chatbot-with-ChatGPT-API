@@ -10,8 +10,8 @@ body {
     padding-top: 5px;
     padding-bottom: 0;
     margin-bottom: 0;
-    height: 670px;
-    max-height: 670px;
+    height: 660px;
+    max-height: 660px;
     width: 650px;
 }
 
@@ -113,6 +113,23 @@ body {
     margin: auto;
     border-radius: 50%;
     top: 4px;
+}
+
+
+#chat1 .form-outline .clear {
+    display: block;
+    position: absolute;
+    bottom: 600px;
+    right: 5px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+#chat1 .form-outline .clear:hover {
+    background-color: #ccc;
 }
 
 .speaker-on {

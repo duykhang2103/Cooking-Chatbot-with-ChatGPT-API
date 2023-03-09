@@ -5,7 +5,7 @@ from colorama import Fore, Back, Style
 # configure OpenAI
 previous_questions_and_answers = []
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 INSTRUCTIONS = """
                 Your name is Gordon RamBot. You are an AI assistant that is expert in cooking. You are a humorous bot.
@@ -18,7 +18,7 @@ INSTRUCTIONS = """
                   """
 ANSWER_SEQUENCE = "\nAI:"
 QUESTION_SEQUENCE = "\nHuman: "
-TEMPERATURE = 0.5
+TEMPERATURE = 0.6
 MAX_TOKENS = 500
 FREQUENCY_PENALTY = 0
 PRESENCE_PENALTY = 0.6

@@ -10,6 +10,7 @@ function toggleCard(){
     formOutline.classList.toggle('disappear');
     cardHeader.classList.toggle('toggle-header');
     document.querySelector('.title').classList.toggle('disappear');
+    document.querySelector('.clear').classList.toggle('disappear');
     document.querySelector('.bubble-avatar').classList.toggle('appear');
 }
 

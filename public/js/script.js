@@ -1,3 +1,4 @@
+
 function createMessage(data, user){
     let newMes = document.createElement('div');
     newMes.classList.add('message');
@@ -54,6 +55,7 @@ $(document).ready(function() {
 
         cardBody.append(newMessage);
         cardBody.scrollTop = cardBody.scrollHeight;
+        storeData(newMessage);
 
         document.getElementById('textAreaExample').value='';
 
@@ -66,6 +68,7 @@ $(document).ready(function() {
                 newMessage = createMessage(modText, "AI"); 
                 cardBody.append(newMessage);
                 cardBody.scrollTop = cardBody.scrollHeight;
+                storeData(newMessage);
             }
         });
     });
