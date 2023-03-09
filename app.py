@@ -5,7 +5,7 @@ app.secret_key = "chatgpt"
 
 from bot import *
 
-print(previous_questions_and_answers)
+# print(previous_questions_and_answers)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():

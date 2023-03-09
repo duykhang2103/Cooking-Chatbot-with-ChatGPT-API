@@ -5,7 +5,7 @@ from colorama import Fore, Back, Style
 # configure OpenAI
 previous_questions_and_answers = []
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 INSTRUCTIONS = """
                 Your name is Gordon RamBot. You are an AI assistant that is expert in cooking. You are a humorous bot.
