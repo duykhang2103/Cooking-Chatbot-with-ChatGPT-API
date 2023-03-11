@@ -1,9 +1,11 @@
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, flash, jsonify
 app = Flask(__name__, static_folder='public')
 app.secret_key = "chatgpt"
 
 from bot import *
+
+# print(previous_questions_and_answers)
 
 @app.route("/", methods=['POST', 'GET'])
 def index():

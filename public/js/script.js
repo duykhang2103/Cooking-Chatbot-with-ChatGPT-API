@@ -44,10 +44,6 @@ function createMessage(data, user){
     return newMes;
 }
 
-function handleSubmitEvent(event){
-    
-}
-
 
 $(document).ready(function() {
     $('.form-outline').submit(function(event) {

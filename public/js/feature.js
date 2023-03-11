@@ -4,7 +4,6 @@ let cardBody = document.querySelector('.card-body');
 let formOutline = document.querySelector('.form-outline');
 let formControl = document.querySelector('.form-control');
 
-// toggle section
 function toggleCard(){
     card.classList.toggle('toggle-bubble');
     cardBody.classList.toggle('toggle-up');
@@ -45,6 +44,8 @@ let recognition = new speechRecog();
 
 // So sad that SpeechRecognition doesn't work on Opera :(
 
+// console.log(new speechRecog());
+  
 recognition.continuous = true;
 reset();
 recognition.onend = reset;
@@ -67,7 +68,6 @@ function turnOnMic(){
     if (recognizing) {
         recognition.stop();
         reset();
-        // formOutline.submit();
     } else {
         recognition.start();
         recognizing = true;
