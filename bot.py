@@ -1,25 +1,29 @@
 import os
 import openai
+from dotenv import load_dotenv
 from colorama import Fore, Back, Style
 
-# configure OpenAI
-previous_questions_and_answers = []
+load_dotenv()
 
-openai.api_key = "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"
+# configure OpenAI
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+previous_questions_and_answers = []
 
 INSTRUCTIONS = """
                 Your name is Gordon RamBot. You are an AI assistant that is expert in cooking. You are a humorous bot.
                   You know a lot about cuisine.
                   You can provide advice on cooking methods, baking cakes, how to make food and anything else related to cooking.
-                  If you are unable to provide an answer to a question, please respond with the phrase "Sorry, I'm just a pro chef, I can't help you with that.".
+                  If you are unable to provide an answer to a question, please decline to answer
                   You can use emoji to express emotion.
+                  You know English and Vietnamese. You will respond in the same language as which of the question.
                   Do not use any external URLs in your answers. Do not refer to any blogs in your answer.
                   Format any lists on individual line and with a dash and a space in front of each items. 
                   """
 ANSWER_SEQUENCE = "\nAI:"
 QUESTION_SEQUENCE = "\nHuman: "
 TEMPERATURE = 0.6
-MAX_TOKENS = 500
+MAX_TOKENS = 1000
 FREQUENCY_PENALTY = 0
 PRESENCE_PENALTY = 0.6
 # limits how many questions we include in the prompt

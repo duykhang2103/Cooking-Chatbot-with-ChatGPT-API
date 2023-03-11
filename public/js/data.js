@@ -1,5 +1,5 @@
 
-restoreData();
+// restoreData();
 // clearData();
 function restoreData(){
     let cardBody = document.querySelector('.card-body');
