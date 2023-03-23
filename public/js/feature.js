@@ -4,6 +4,7 @@ let cardBody = document.querySelector('.card-body');
 let formOutline = document.querySelector('.form-outline');
 let formControl = document.querySelector('.form-control');
 
+// toggle section
 function toggleCard(){
     card.classList.toggle('toggle-bubble');
     cardBody.classList.toggle('toggle-up');
@@ -32,7 +33,7 @@ function speak(speech) {
         utterance.rate = 1.5; // 0.1 to 10
         //utterance.pitch = 1; //0 to 2
         //utterance.text = 'Hello World';
-        //utterance.lang = 'en-US';
+        utterance.lang = 'en-US';
         speechSynthesis.speak(utterance);
     }
 }
@@ -44,8 +45,6 @@ let recognition = new speechRecog();
 
 // So sad that SpeechRecognition doesn't work on Opera :(
 
-// console.log(new speechRecog());
-  
 recognition.continuous = true;
 reset();
 recognition.onend = reset;
@@ -68,6 +67,7 @@ function turnOnMic(){
     if (recognizing) {
         recognition.stop();
         reset();
+        // formOutline.submit();
     } else {
         recognition.start();
         recognizing = true;
