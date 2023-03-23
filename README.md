@@ -42,3 +42,5 @@ To run just do the following:
 venv\Scripts\activate.bat
 flask run
 ```
+
+![image](https://user-images.githubusercontent.com/93172216/227234243-82e1e477-171a-42d7-a4f2-e2f374f4d982.png)
