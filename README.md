@@ -1,5 +1,5 @@
-# chatgpt
-
+# Cooking Chatbot with ChatGPT API
+Here is instruction to create a Chatbot wtih ChatGPT API
 # Setup
 
 Make sure you have python3 installed:
